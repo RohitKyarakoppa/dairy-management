@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Farmer Report</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+
+body{
+    font-family: Arial;
+    background:#f4f4f4;
+}
+
+.container{
+    width:95%;
+    margin:auto;
+}
+
+table{
+    width:100%;
+    border-collapse: collapse;
+    background:white;
+    margin-top:20px;
+}
+
+th, td{
+    border:1px solid #ccc;
+    padding:12px;
+    text-align:center;
+}
+
+th{
+    background:#2d6a4f;
+    color:white;
+}
+
+h2, h3{
+    text-align:center;
+}
+
+form{
+    text-align:center;
+    margin-top:20px;
+}
+
+input{
+    padding:10px;
+    width:250px;
+}
+
+button{
+    padding:10px 20px;
+    background:#2d6a4f;
+    color:white;
+    border:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Farmer Milk Report</h2>
+
+<form method="POST">
+
+<input type="text"
+name="farmer_id"
+placeholder="Enter Farmer ID"
+required>
+
+<button type="submit">
+
+Search Report
+
+</button>
+
+</form>
+
+{% if farmer_name %}
+
+<h3>{{ farmer_name }}</h3>
+
+<table>
+
+<tr>
+
+<th>Date</th>
+<th>Shift</th>
+<th>Liters</th>
+<th>FAT</th>
+<th>SNF</th>
+<th>Amount</th>
+
+</tr>
+
+{% for row in data %}
+
+<tr>
+
+<td>{{ row[1] }}</td>
+
+<td>{{ row[2] }}</td>
+
+<td>{{ row[3] }} L</td>
+
+<td>{{ row[4] }}</td>
+
+<td>{{ row[5] }}</td>
+
+<td>₹ {{ row[6] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>

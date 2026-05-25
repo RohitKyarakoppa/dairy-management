@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search Farmer</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Search Farmer</h2>
+
+<form method="POST">
+
+<label>Enter Farmer ID</label>
+
+<input type="text" name="farmer_id" required>
+
+<button type="submit">Search</button>
+
+</form>
+
+{% if farmer %}
+
+<hr>
+
+<h3>Farmer Details</h3>
+
+<p><b>Farmer ID:</b> {{ farmer[1] }}</p>
+
+<p><b>Name:</b> {{ farmer[2] }}</p>
+
+<p><b>Mobile:</b> {{ farmer[3] }}</p>
+
+<p><b>Village:</b> {{ farmer[4] }}</p>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
